@@ -16,7 +16,6 @@ const generateRandomName = () => {
 };
 
 function randomIntFromInterval(min, max) {
-  // min and max included
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -107,8 +106,10 @@ const fakeJsonGenerator = (numberOfRows) => {
     finalDataArr.push({
       orderId: generateRandomId(),
       name: generateRandomName(),
+      amount: randomIntFromInterval(200, 400),
+      date: selectRandomDate(),
+      address: randomAddressGenerator(),
       country: generateRandomCountry(),
-      type: selectRandomFromArray(["Online", "Retail", "Direct"]),
       status: selectRandomFromArray([
         "Pending",
         "Success",
@@ -116,9 +117,7 @@ const fakeJsonGenerator = (numberOfRows) => {
         "Info",
         "Danger",
       ]),
-      amount: randomIntFromInterval(200, 400),
-      address: randomAddressGenerator(),
-      date: selectRandomDate(),
+      type: selectRandomFromArray(["Online", "Retail", "Direct"]),
     });
   }
   return finalDataArr;

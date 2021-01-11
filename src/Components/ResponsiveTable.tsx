@@ -181,8 +181,7 @@ export default function ResponsiveTable() {
     const [type, setType] = useState("All");
 
     useEffect(() => {
-        console.log(fakeJsonGenerator(100));
-        setRows(fakeJsonGenerator(100))
+        setRows(fakeJsonGenerator(35))
     },[])
 
     useEffect(() => {
@@ -305,7 +304,7 @@ export default function ResponsiveTable() {
                     padding:"20px"
                 }}
             >
-                <Pagination page={page} count={Math.floor((rowsAfterFiltered.length - 1) / rowsPerPage)} onChange={(e, p) => {
+                <Pagination page={page} count={Math.ceil((rowsAfterFiltered.length) / rowsPerPage)} onChange={(e, p) => {
                     setPage(p)
                 }} showFirstButton={width > 400} showLastButton={width > 400} variant="text" color="primary" shape="rounded" />
             </div>            
